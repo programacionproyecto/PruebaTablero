@@ -21,9 +21,13 @@ public class Tablero extends javax.swing.JFrame {
     boolean primero;
     int f1,f2,c1,c2;
     Color colors;
+    int Turno;
+    String botonpressed;
     public Tablero() {
         initComponents();
         f1=-1;f2=-1;c1=-1;c1=-1;
+        Turno=1;
+        botonpressed="";
         primero=false;
         colors=Color.WHITE;
         tablero=new Ficha[10][10];
@@ -54,6 +58,11 @@ public class Tablero extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         p01.setBackground(new java.awt.Color(255, 255, 255));
+        p01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p01ActionPerformed(evt);
+            }
+        });
         getContentPane().add(p01, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 70, 60));
 
         jButton2.setText("jButton1");
@@ -65,7 +74,12 @@ public class Tablero extends javax.swing.JFrame {
         p02.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(p02, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 70, 60));
 
-        p11.setBackground(new java.awt.Color(255, 255, 255));
+        p11.setBackground(new java.awt.Color(51, 51, 255));
+        p11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p11ActionPerformed(evt);
+            }
+        });
         getContentPane().add(p11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 70, 60));
 
         p12.setBackground(new java.awt.Color(255, 255, 255));
@@ -85,6 +99,17 @@ public class Tablero extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void p11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p11ActionPerformed
+        // TODO add your handling code here:
+        mover("p11",p11.getBackground(),1,1);
+        
+    }//GEN-LAST:event_p11ActionPerformed
+
+    private void p01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p01ActionPerformed
+        // TODO add your handling code here:
+        mover("p01",p01.getBackground(),0,1);
+    }//GEN-LAST:event_p01ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,11 +147,257 @@ public class Tablero extends javax.swing.JFrame {
     }
 
     void mover(String nombre,Color color,int F,int C){
-    
+    if(primero){
+            f2=F;c2=C;
+            if(moveArre()&& !nombre.equalsIgnoreCase(botonpressed)){
+                moveFi(nombre,colors);
+                moveFi(botonpressed,Color.WHITE);
+                primero=false;
+                Turno++;
+            }
+        }
+    else{
+        if(!color.equals(Color.WHITE)){
+            primero=true;
+            colors=color;
+            botonpressed=nombre;
+            moveFi(nombre,Color.YELLOW);
+            f1=F;c1=C;
+        }
+        }
     }
+    void moveFi(String nombre, Color color){
+       if(nombre.equals("p00")){
+        p00.setBackground(color);
+    }else if(nombre.equals("p01")){
+        p01.setBackground(color);
+    }else if(nombre.equals("p02")){
+        p02.setBackground(color);
+//    }else if(nombre.equals("p03")){
+//        p03.setBackground(color);
+//    }else if(nombre.equals("p04")){
+//        p04.setBackground(color);
+//    }else if(nombre.equals("p05")){
+//        p05.setBackground(color);
+//    }else if(nombre.equals("p06")){
+//        p06.setBackground(color);
+//    }else if(nombre.equals("p07")){
+//        p07.setBackground(color);
+//    }else if(nombre.equals("p08")){
+//        p08.setBackground(color);
+//    }else if(nombre.equals("p09")){
+//        p09.setBackground(color);
+    }else if(nombre.equals("p10")){
+        p10.setBackground(color);
+    }else if(nombre.equals("p11")){
+        p11.setBackground(color);
+    }else if(nombre.equals("p12")){
+        p12.setBackground(color);
+    }else if(nombre.equals("p13")){
+//        p13.setBackground(color);
+//    }else if(nombre.equals("p14")){
+//        p14.setBackground(color);
+//    }else if(nombre.equals("p15")){
+//        p15.setBackground(color);
+//    }else if(nombre.equals("p16")){
+//        p16.setBackground(color);
+//    }else if(nombre.equals("p17")){
+//        p17.setBackground(color);
+//    }else if(nombre.equals("p18")){
+//        p18.setBackground(color);
+//    }else if(nombre.equals("p19")){
+//        p19.setBackground(color);
+//    }else if(nombre.equals("p20")){
+        p20.setBackground(color);
+    }else if(nombre.equals("p21")){
+        p21.setBackground(color);
+    }else if(nombre.equals("p22")){
+        p22.setBackground(color);
+    }else if(nombre.equals("p23")){
+//        p23.setBackground(color);
+//    }else if(nombre.equals("p24")){
+//        p24.setBackground(color);
+//    }else if(nombre.equals("p25")){
+//        p25.setBackground(color);
+//    }else if(nombre.equals("p26")){
+//        p26.setBackground(color);
+//    }else if(nombre.equals("p27")){
+//        p27.setBackground(color);
+//    }else if(nombre.equals("p28")){
+//        p28.setBackground(color);
+//    }else if(nombre.equals("p29")){
+//        p29.setBackground(color);
+//    }else if(nombre.equals("p30")){
+//        p30.setBackground(color);
+//    }else if(nombre.equals("p31")){
+//        p31.setBackground(color);
+//    }else if(nombre.equals("p32")){
+//        p32.setBackground(color);
+//    }else if(nombre.equals("p33")){
+//        p33.setBackground(color);
+//    }else if(nombre.equals("p34")){
+//        p34.setBackground(color);
+//    }else if(nombre.equals("p35")){
+//        p35.setBackground(color);
+//    }else if(nombre.equals("p36")){
+//        p36.setBackground(color);
+//    }else if(nombre.equals("p37")){
+//        p37.setBackground(color);
+//    }else if(nombre.equals("p38")){
+//        p38.setBackground(color);
+//    }else if(nombre.equals("p39")){
+//        p39.setBackground(color);
+//    }else if(nombre.equals("p40")){
+//        p40.setBackground(color);
+//    }else if(nombre.equals("p41")){
+//        p41.setBackground(color);
+//    }else if(nombre.equals("p42")){
+//        p42.setBackground(color);
+//    }else if(nombre.equals("p43")){
+//        p43.setBackground(color);
+//    }else if(nombre.equals("p44")){
+//        p44.setBackground(color);
+//    }else if(nombre.equals("p45")){
+//        p45.setBackground(color);
+//    }else if(nombre.equals("p46")){
+//        p46.setBackground(color);
+//    }else if(nombre.equals("p47")){
+//        p47.setBackground(color);
+//    }else if(nombre.equals("p48")){
+//        p48.setBackground(color);
+//    }else if(nombre.equals("p49")){
+//        p49.setBackground(color);
+//    }else if(nombre.equals("p50")){
+//        p50.setBackground(color);
+//    }else if(nombre.equals("p51")){
+//        p51.setBackground(color);
+//    }else if(nombre.equals("p52")){
+//        p52.setBackground(color);
+//    }else if(nombre.equals("p53")){
+//        p53.setBackground(color);
+//    }else if(nombre.equals("p54")){
+//        p54.setBackground(color);
+//    }else if(nombre.equals("p55")){
+//        p55.setBackground(color);
+//    }else if(nombre.equals("p56")){
+//        p56.setBackground(color);
+//    }else if(nombre.equals("p57")){
+//        p57.setBackground(color);
+//    }else if(nombre.equals("p58")){
+//        p58.setBackground(color);
+//    }else if(nombre.equals("p59")){
+//        p59.setBackground(color);
+//    }else if(nombre.equals("p60")){
+//        p60.setBackground(color);
+//    }else if(nombre.equals("p61")){
+//        p61.setBackground(color);
+//    }else if(nombre.equals("p62")){
+//        p62.setBackground(color);
+//    }else if(nombre.equals("p63")){
+//        p63.setBackground(color);
+//    }else if(nombre.equals("p64")){
+//        p64.setBackground(color);
+//    }else if(nombre.equals("p65")){
+//        p65.setBackground(color);
+//    }else if(nombre.equals("p66")){
+//        p66.setBackground(color);
+//    }else if(nombre.equals("p67")){
+//        p67.setBackground(color);
+//    }else if(nombre.equals("p68")){
+//        p68.setBackground(color);
+//    }else if(nombre.equals("p69")){
+//        p69.setBackground(color);
+//    }else if(nombre.equals("p70")){
+//        p70.setBackground(color);
+//    }else if(nombre.equals("p71")){
+//        p71.setBackground(color);
+//    }else if(nombre.equals("p72")){
+//        p72.setBackground(color);
+//    }else if(nombre.equals("p73")){
+//        p73.setBackground(color);
+//    }else if(nombre.equals("p74")){
+//        p74.setBackground(color);
+//    }else if(nombre.equals("p75")){
+//        p75.setBackground(color);
+//    }else if(nombre.equals("p76")){
+//        p76.setBackground(color);
+//    }else if(nombre.equals("p77")){
+//        p77.setBackground(color);
+//    }else if(nombre.equals("p78")){
+//        p78.setBackground(color);
+//    }else if(nombre.equals("p79")){
+//        p79.setBackground(color);
+//    }else if(nombre.equals("p80")){
+//        p80.setBackground(color);
+//    }else if(nombre.equals("p81")){
+//        p81.setBackground(color);
+//    }else if(nombre.equals("p82")){
+//        p82.setBackground(color);
+//    }else if(nombre.equals("p83")){
+//        p83.setBackground(color);
+//    }else if(nombre.equals("p84")){
+//        p84.setBackground(color);
+//    }else if(nombre.equals("p85")){
+//        p85.setBackground(color);
+//    }else if(nombre.equals("p86")){
+//        p86.setBackground(color);
+//    }else if(nombre.equals("p87")){
+//        p87.setBackground(color);
+//    }else if(nombre.equals("p88")){
+//        p88.setBackground(color);
+//    }else if(nombre.equals("p89")){
+//        p89.setBackground(color);
+//    }else if(nombre.equals("p90")){
+//        p90.setBackground(color);
+//    }else if(nombre.equals("p91")){
+//        p91.setBackground(color);
+//    }else if(nombre.equals("p92")){
+//        p92.setBackground(color);
+//    }else if(nombre.equals("p93")){
+//        p93.setBackground(color);
+//    }else if(nombre.equals("p94")){
+//        p94.setBackground(color);
+//    }else if(nombre.equals("p95")){
+//        p95.setBackground(color);
+//    }else if(nombre.equals("p96")){
+//        p96.setBackground(color);
+//    }else if(nombre.equals("p97")){
+//        p97.setBackground(color);
+//    }else if(nombre.equals("p98")){
+//        p98.setBackground(color);
+//    }else if(nombre.equals("p99")){
+//        p99.setBackground(color);
+//    }
+    } 
+}
     
-    
-    
+  boolean moveArre(){
+//        if(f1>=0&&c1>=0&&f2>=0&&c2>=0){
+//           if(Turno%2==0){ 
+//                if(f2-f1==1 || f1-f2==1){
+//                    if(c2-c1==1 || c1-c2==1 || c1==c2){
+//                        tablero[f2][c2]=tablero[f1][c1];
+//                        //print();
+//                        return true;
+//            }
+//          }else if(f1==f2){
+//                    if(c2-c1==1 || c1-c2==1){
+//                     tablero[f2][c2]=tablero[f1][c1];
+//                   //  print();
+//                    return true;
+//                    }
+//          }
+//          return false;      
+//       
+//        
+//        
+//        }//fin de Hereos turn
+//        else{//Turno villanos
+//        
+//        }
+//        }
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton p00;
